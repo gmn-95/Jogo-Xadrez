@@ -9,7 +9,7 @@ public class Position {
 	}
 
 	public Position(int row, int column) {
-		this.row = row;
+		this.row 	= row;
 		this.column = column;
 	}
 
@@ -30,7 +30,7 @@ public class Position {
 	}
 	
 	@Override
-	public String toString() {		// imprimir a posição
+	public String toString() {		
 		return row + ", " + column;
 	}
 }
