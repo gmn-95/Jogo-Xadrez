@@ -50,24 +50,40 @@ public class UI {
 	}
 	
 	public static void printBoard(ChessPiece[][] pieces) {
-		
+		System.out.println("\t\t  a b c d e f g h");
 		for(int l = 0; l < pieces.length; l++) {
 			System.out.print("\t\t" + (8 - l) + " ");
 			for(int c = 0; c < pieces.length; c++) {
-				printPiece(pieces[l][c]);
+				printPiece(pieces[l][c], false);
 			}
 			System.out.println();
 		}
-		System.out.println("\n\t\t  a b c d e f g h");
+		System.out.println("\t\t  a b c d e f g h");
 	}
+
+	public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) {
+		System.out.println("\t\t  a b c d e f g h");
+		for(int l = 0; l < pieces.length; l++) {
+			System.out.print("\t\t" + (8 - l) + " ");
+			for(int c = 0; c < pieces.length; c++) {
+				printPiece(pieces[l][c], possibleMoves[l][c]);
+			}
+			System.out.println();
+		}
+		System.out.println("\t\t  a b c d e f g h");
+	}	
 	
-	private static void printPiece(ChessPiece piece) {
+	
+	private static void printPiece(ChessPiece piece, boolean background) {
+		if(background) {
+			System.out.print(ANSI_BLACK_BACKGROUND);
+		}
     	if (piece == null) {
-            System.out.print("-");
+            System.out.print("°" + ANSI_RESET);
         }
         else {
             if (piece.getColor() == Color.WHITE) {
-                System.out.print(ANSI_WHITE + piece + ANSI_RESET);
+                System.out.print(ANSI_GREEN + piece + ANSI_RESET);
             }
             else {
                 System.out.print(ANSI_YELLOW + piece + ANSI_RESET);
