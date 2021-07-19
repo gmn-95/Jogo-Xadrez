@@ -30,6 +30,12 @@ public class UI {
 	public static final String ANSI_CYAN_BACKGROUND = "\u001B[46m";
 	public static final String ANSI_WHITE_BACKGROUND = "\u001B[47m";
 	
+	// https://stackoverflow.com/questions/2979383/java-clear-the-console
+	public static void clearScreen() {
+		System.out.print("\033[H\033[2J");
+		System.out.flush();
+	}
+	
 	public static ChessPosition ReadChessPosition(Scanner sc) {
 		try {
 			String s = sc.nextLine();
@@ -46,13 +52,13 @@ public class UI {
 	public static void printBoard(ChessPiece[][] pieces) {
 		
 		for(int l = 0; l < pieces.length; l++) {
-			System.out.print((8 - l) + "  ");
+			System.out.print("\t\t" + (8 - l) + " ");
 			for(int c = 0; c < pieces.length; c++) {
 				printPiece(pieces[l][c]);
 			}
 			System.out.println();
 		}
-		System.out.println("\n   a b c d e f g h");
+		System.out.println("\n\t\t  a b c d e f g h");
 	}
 	
 	private static void printPiece(ChessPiece piece) {
