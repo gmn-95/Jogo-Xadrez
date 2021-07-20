@@ -1,7 +1,11 @@
 package application;
 
+import java.util.Arrays;
 import java.util.InputMismatchException;
+import java.util.List;
 import java.util.Scanner;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import chess.ChessMatch;
 import chess.ChessPiece;
@@ -50,8 +54,10 @@ public class UI {
 		}
 	}
 	
-	public static void printMatch(ChessMatch chessMatch) {
+	public static void printMatch(ChessMatch chessMatch, List<ChessPiece> captured) {
 		printBoard(chessMatch.getPieces());
+		System.out.println();
+		printCapturedPieces(captured);
 		System.out.println();
 		System.out.println("Turn: " + chessMatch.getTurn());
 		System.out.println("Wating player: " + chessMatch.getCurrentPlayer());
@@ -62,11 +68,9 @@ public class UI {
 		System.out.println("\t\t  a b c d e f g h");
 		
 		for(int l = 0; l < pieces.length; l++) {
-			
 			System.out.print("\t\t" + (8 - l) + " ");
 			
 			for(int c = 0; c < pieces.length; c++) {
-				
 				printPiece(pieces[l][c], false);
 			}
 			System.out.println();
@@ -78,18 +82,15 @@ public class UI {
 		System.out.println("\t\t  a b c d e f g h");
 		
 		for(int l = 0; l < pieces.length; l++) {
-			
 			System.out.print("\t\t" + (8 - l) + " ");
 			
 			for(int c = 0; c < pieces.length; c++) {
-				
 				printPiece(pieces[l][c], possibleMoves[l][c]);
 			}
 			System.out.println();
 		}
 		System.out.println("\t\t  a b c d e f g h");
 	}	
-	
 	
 	private static void printPiece(ChessPiece piece, boolean background) {
 		if(background) {
@@ -107,5 +108,23 @@ public class UI {
             }
         }
         System.out.print(" ");
+	}
+	
+	private static void printCapturedPieces(List<ChessPiece> captured) {
+		List<ChessPiece> white = captured.stream().filter(x -> x.getColor() == Color.WHITE).collect(Collectors.toList());
+		List<ChessPiece> red = captured.stream().filter(x -> x.getColor() == Color.RED).collect(Collectors.toList());
+		
+		System.out.println("Captured pieces: ");
+		System.out.println("White: ");
+		System.out.println(ANSI_WHITE);
+		System.out.println(Arrays.toString(white.toArray()));
+		System.out.println(ANSI_RESET);
+		
+		System.out.println("Red: ");
+		System.out.println(ANSI_RED);
+		System.out.println(Arrays.toString(red.toArray()));
+		System.out.println(ANSI_RESET);
+		
+		
 	}
 }
