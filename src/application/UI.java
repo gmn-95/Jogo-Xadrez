@@ -50,10 +50,15 @@ public class UI {
 	}
 	
 	public static void printBoard(ChessPiece[][] pieces) {
+		
 		System.out.println("\t\t  a b c d e f g h");
+		
 		for(int l = 0; l < pieces.length; l++) {
+			
 			System.out.print("\t\t" + (8 - l) + " ");
+			
 			for(int c = 0; c < pieces.length; c++) {
+				
 				printPiece(pieces[l][c], false);
 			}
 			System.out.println();
@@ -63,9 +68,13 @@ public class UI {
 
 	public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) {
 		System.out.println("\t\t  a b c d e f g h");
+		
 		for(int l = 0; l < pieces.length; l++) {
+			
 			System.out.print("\t\t" + (8 - l) + " ");
+			
 			for(int c = 0; c < pieces.length; c++) {
+				
 				printPiece(pieces[l][c], possibleMoves[l][c]);
 			}
 			System.out.println();
