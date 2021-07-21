@@ -83,6 +83,7 @@ public class UI {
 	}
 
 	public static void printBoard(ChessPiece[][] pieces, boolean[][] possibleMoves) {
+		System.out.println("  a b c d e f g h");
 		for (int i = 0; i < pieces.length; i++) {
 			System.out.print((8 - i) + " ");
 			for (int j = 0; j < pieces.length; j++) {
@@ -120,8 +121,8 @@ public class UI {
 		System.out.print(ANSI_WHITE);
 		System.out.println(Arrays.toString(white.toArray()));
 		System.out.print(ANSI_RESET);
-		System.out.print("Black: ");
-		System.out.print(ANSI_YELLOW);
+		System.out.print("Red:   ");
+		System.out.print(ANSI_RED);
 		System.out.println(Arrays.toString(black.toArray()));
 		System.out.print(ANSI_RESET);
 	}
