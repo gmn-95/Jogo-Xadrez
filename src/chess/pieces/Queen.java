@@ -15,8 +15,8 @@ public class Queen extends ChessPiece { // torre
 	@Override
 	public String toString() {
 		char cod = '\u2655';
-		String rook = String.valueOf(cod);
-		return rook;
+		String queen = String.valueOf(cod);
+		return queen;
 	}
 
 	@Override
